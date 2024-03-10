@@ -37,7 +37,13 @@ cd ../backend
 npm install
 ```
 
-3. **Inicie o servidor frontend:**
+3. **Adicione um arquivo .env na raiz do backend:**
+
+```
+WHISPER_API_KEY=<open_ai_api_key>
+```
+
+4. **Inicie o servidor frontend:**
 
 ```
 cd backend
