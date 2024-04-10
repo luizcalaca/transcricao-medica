@@ -1,20 +1,32 @@
-import { Outlet, NavLink } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
+import './navbar.css';
 
-const Layout = () => {
+const Navbar = () => {
  return (
-    <div>
-      <nav>
-        <ul>
-          <li><NavLink to="/login">Login</NavLink></li>
-          <li><NavLink to="/recorder">Recorder</NavLink></li>
-          <li><NavLink to="/commands">Commands</NavLink></li>
+    <html>
+    <header className="header">
+      <nav className="nav">
+        <ul className="nav__list">
+          <li className="nav__item">
+            <NavLink to="/login" className="nav__link">Login</NavLink>
+          </li>
+          <li className="nav__item">
+            <NavLink to="/recorder" className="nav__link">Recorder</NavLink>
+          </li>
+          <li className="nav__item">
+            <NavLink to="/commands" className="nav__link">Commands</NavLink>
+          </li>
         </ul>
       </nav>
-      <main>
-        <Outlet />
-      </main>
-    </div>
+    </header>
+    <body>
+        <main>
+            <Outlet/>
+        </main>
+    </body>
+    </html>
+
  );
 };
 
-export default Layout;
+export default Navbar;

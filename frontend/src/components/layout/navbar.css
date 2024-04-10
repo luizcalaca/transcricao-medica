@@ -1,0 +1,37 @@
+/* Navbar.css */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #333; /* Cor de fundo do navbar */
+    color: white; /* Cor do texto */
+    z-index: 1000; /* Garante que o navbar fique acima de outros elementos */
+   }
+   
+   .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+   }
+   
+   .nav__list {
+    list-style: none;
+    display: flex;
+    gap: 20px; /* Espaçamento entre os itens do menu */
+   }
+   
+   .nav__item {
+    list-style: none;
+   }
+   
+   .nav__link {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+   }
+   
+   .nav__link:hover {
+    background-color: #555; /* Cor de fundo ao passar o mouse */
+   }
+   
