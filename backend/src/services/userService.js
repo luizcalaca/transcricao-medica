@@ -43,10 +43,38 @@ const loginUser = async ({email, password}) => {
    }
   };
   
-     
+const removeUser = async (userId) => {
+   try {
+      const result = await User.destroy({
+        where: {
+          id: userId
+        }
+      });
+      return result;
+   } catch (error) {
+      throw error;
+   }
+};
+
+const updateUser = async (userId, userData) => {
+   try {
+      const result = await User.update(userData, {
+        where: {
+          id: userId
+        },
+        returning: true
+      });
+      return result[0];
+   } catch (error) {
+      throw error;
+   }
+};
+
 module.exports = {
    createUser,
    getUserByEmailAndPassword,
    loginUser,
+   removeUser,
+   updateUser,
 }
    

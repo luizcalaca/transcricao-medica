@@ -19,32 +19,32 @@ const loginUser = async (req, res) => {
   };
 
 
+const updateUser = async (req, res) => {
+  const { id } = req.params;
+  const isUpdated = await userService.updateUser(id, req.body);
 
-// const updateCourse = async (req, res) => {
-//   const { id } = req.params;
-//   const isUpdated = await courseService.updateCourse(id, req.body);
+  if (isUpdated) {
+    return res.status(200).json({ message: `user ${id} atualizado com sucesso` });
+  }
 
-//   if (isUpdated) {
-//     return res.status(200).json({ message: `Curso ${id} atualizado com sucesso` });
-//   }
+  return res.status(404).json({ message: `user ${id} não encontrado` });
+};
 
-//   return res.status(404).json({ message: `Curso ${id} não encontrado` });
-// };
-
-// const removeCourse = async (req, res) => {
-//   const { id } = req.params;
-//   const isRemoved = await courseService.removeCourse(id);
+const removeUser = async (req, res) => {
+  const { id } = req.params;
+  const isRemoved = await userService.removeUser(id);
   
-//   if (isRemoved) {
-//     return res.status(200).json({ message: `Curso ${id} removido com sucesso` });
-//   }
+  if (isRemoved) {
+    return res.status(200).json({ message: `User ${id} removido com sucesso` });
+  }
 
-//   return res.status(404).json({ message: `Curso ${id} não encontrado` });
-// };
+  return res.status(404).json({ message: `User ${id} não encontrado` });
+};
 
 module.exports = {
-  createCourse,
-  getCourses,
-  updateCourse,
-  removeCourse,
+  createUser,
+  getUserByEmailAndPassword,
+  removeUser,
+  updateUser,
+  loginUser
 };
