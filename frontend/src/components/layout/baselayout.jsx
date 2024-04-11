@@ -3,7 +3,7 @@ import './navbar.css';
 
 const Navbar = () => {
  return (
-    <html>
+    <div>
     <header className="header">
       <nav className="nav">
         <ul className="nav__list">
@@ -19,12 +19,12 @@ const Navbar = () => {
         </ul>
       </nav>
     </header>
-    <body>
+    <div>
         <main>
             <Outlet/>
         </main>
-    </body>
-    </html>
+    </div>
+    </div>
 
  );
 };

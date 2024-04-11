@@ -19,8 +19,8 @@ const CommandList = () => {
  }, []);
 
  return (
-    <div>{commands}
-      {/* {commands?.length > 0 ? (
+    <div>
+      {commands?.length > 0 ? (
         <ul>
           {commands?.map((command) => (
             <li key={command.id}>
@@ -30,7 +30,7 @@ const CommandList = () => {
         </ul>
       ) : (
         <p>Não há comandos disponíveis.</p>
-      )} */}
+      )} 
     </div>
  );
 };
