@@ -11,7 +11,7 @@ const commandsRoutes = require('./routes/commandsRoutes');
 const errorMiddleware = require('./middlewares/error');
 
 app.use(cors({
-    origin: 'http://localhost:5173'
+    origin: process.env.FRONTEND_URL || 'http://localhost:5173'
 }));
 
 app.use((req, res, next) => {
