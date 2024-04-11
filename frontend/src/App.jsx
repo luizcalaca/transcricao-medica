@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Recorder from "./components/recorder";
 import Layout from './components/layout/baselayout';
 import Login from './components/login';
-import Commands from './components/commands';
+import Commands from './components/commands/commands';
 
 const App = () => {
     return (

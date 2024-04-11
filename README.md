@@ -43,7 +43,16 @@ npm install
 WHISPER_API_KEY=<open_ai_api_key>
 ```
 
-4. **Inicie o servidor frontend:**
+4. **Configure o Sequelize ORM para o banco de dados**
+
+```
+env $(cat .env) npx sequelize db:drop
+env $(cat .env) npx sequelize db:create
+env $(cat .env) npx sequelize db:migrate
+env $(cat .env) npx sequelize db:seed:all
+```
+
+5. **Inicie o servidor frontend:**
 
 ```
 cd backend

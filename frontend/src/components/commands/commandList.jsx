@@ -19,13 +19,19 @@ const CommandList = () => {
  }, []);
 
  return (
-    <ul>
-      {commands.map((command) => (
-        <li key={command.id}>
-          {command.commandName} - {command.commandOutput}
-        </li>
-      ))}
-    </ul>
+    <div>{commands}
+      {/* {commands?.length > 0 ? (
+        <ul>
+          {commands?.map((command) => (
+            <li key={command.id}>
+              {command.commandName} - {command.commandOutput}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>Não há comandos disponíveis.</p>
+      )} */}
+    </div>
  );
 };
 
