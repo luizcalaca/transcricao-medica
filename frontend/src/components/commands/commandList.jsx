@@ -8,7 +8,7 @@ const CommandList = () => {
  useEffect(() => {
     const fetchCommands = async () => {
       try {
-        const response = await axios.get('/api/commands');
+        const response = await axios.get('http://localhost:3012/commands/getalluser/1');
         setCommands(response.data);
       } catch (error) {
         console.error('Erro ao buscar comandos:', error);
@@ -24,7 +24,7 @@ const CommandList = () => {
         <ul>
           {commands?.map((command) => (
             <li key={command.id}>
-              {command.commandName} - {command.commandOutput}
+              {command.nameCommand} - {command.textGenerated}
             </li>
           ))}
         </ul>

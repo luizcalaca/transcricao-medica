@@ -1,4 +1,5 @@
 import CommandForm from './commandForm';
+import CommandList from './commandList';
 
 const Commands = () => {
  return (
@@ -6,6 +7,7 @@ const Commands = () => {
       <h2>Adicionar Comando</h2>
       <CommandForm />
       <h2>Lista de Comandos</h2>
+      <CommandList />
     </div>
  );
 };
