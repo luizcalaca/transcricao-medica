@@ -1,8 +1,8 @@
 const { Command } = require('../models/');
 
-const createCommand = async ({ nameCommand, textGenerated}) => {
+const createCommand = async ({ nameCommand, textGenerated, userId }) => {
  try {
-    const command = await Command.create({ nameCommand, textGenerated});
+    const command = await Command.create({ nameCommand, textGenerated, userId });
     return command;
  } catch (error) {
     throw error;

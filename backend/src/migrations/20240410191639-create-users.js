@@ -22,12 +22,12 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.NOW
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.NOW
@@ -37,7 +37,7 @@ module.exports = {
         allowNull: false,
         defaultValue: true
       },
-      clinicName: {
+      clinic_name: {
         type: Sequelize.STRING,
         allowNull: true
       }

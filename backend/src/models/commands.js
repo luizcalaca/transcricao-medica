@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: true
+      },
+      userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
       }
     },{
       tableName: 'commands',
