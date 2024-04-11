@@ -5,7 +5,8 @@ const FormData = require('form-data');
 const fs = require('fs');
 const app = express();
 const cors = require('cors');
-const { userRoutes } = require('./routes/userRoutes');
+const userRoutes = require('./routes/userRoutes');
+const commandsRoutes = require('./routes/commandsRoutes');
 
 app.use(cors({
     origin: 'http://localhost:5173'
@@ -19,6 +20,7 @@ app.use((req, res, next) => {
 app.use(express.json({ limit: '100mb' }));
 
 app.use('/users', userRoutes)
+app.use('/commands', commandsRoutes)
 
 app.post('/upload', async (req, res) => {
     const base64Audio = req.body.audioBuffer;

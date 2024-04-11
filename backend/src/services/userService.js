@@ -15,7 +15,7 @@ const createUser = async ({ email, password }) => {
     }
    };
 
-const getUserByEmailAndPassword = async (email, password) => {
+const getUserByEmailAndPassword = async ({ email, password }) => {
    try {
       const user = await User.findOne({
          where: {
@@ -29,7 +29,7 @@ const getUserByEmailAndPassword = async (email, password) => {
    }
 };
 
-const loginUser = async ({email, password}) => {
+const loginUser = async ({ email, password }) => {
    try {
       const user = await getUserByEmailAndPassword({email, password});
       if (!user) {
@@ -56,9 +56,9 @@ const removeUser = async (userId) => {
    }
 };
 
-const updateUser = async (userId, userData) => {
+const updateUser = async (userId, { name, email, password, clinicName }) => {
    try {
-      const result = await User.update(userData, {
+      const result = await User.update({ name, email, password, clinicName }, {
         where: {
           id: userId
         },

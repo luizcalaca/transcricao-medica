@@ -23,6 +23,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: true
       }
+    },
+    {
+      tableName: 'users',
+      underscored: true,
     });
   
     User.associate = function(models) {

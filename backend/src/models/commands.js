@@ -1,11 +1,11 @@
 // models/command.js
 module.exports = (sequelize, DataTypes) => {
     const Command = sequelize.define('Command', {
-      name_command: {
+      nameCommand: {
         type: DataTypes.STRING,
         allowNull: false
       },
-      text_generated: {
+      textGenerated: {
         type: DataTypes.TEXT,
         allowNull: false
       },
@@ -14,6 +14,9 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         defaultValue: true
       }
+    },{
+      tableName: 'commands',
+      underscored: true,
     });
   
     Command.associate = function(models) {

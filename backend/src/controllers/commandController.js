@@ -12,7 +12,19 @@ const getCommandsbyUser = async (req, res) => {
   return res.status(200).json(user);
 };
 
+const updateCommand = async (req, res) => {
+    const { id } = req.params;
+    const isUpdated = await commandService.updateCommand(id, req.body);
+  
+    if (isUpdated) {
+      return res.status(200).json({ message: `Command ${id} atualizado com sucesso` });
+    }
+  
+    return res.status(404).json({ message: `Command ${id} não encontrado` });
+  };
+
 module.exports = {
     createCommand,
     getCommandsbyUser,
+    updateCommand,
 }

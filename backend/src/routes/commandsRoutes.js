@@ -4,6 +4,6 @@ const commandController = require('../controllers/commandController');
 
 router.post('/create', commandController.createCommand);
 router.get('/getalluser/:id', commandController.getCommandsbyUser);
-router.put('/updateUser', commandController.updateUser)
+router.put('/updateUser', commandController.updateCommand)
 
 module.exports = router;
