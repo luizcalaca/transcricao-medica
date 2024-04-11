@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+require('express-async-errors');
 const axios = require('axios');
 const FormData = require('form-data');
 const fs = require('fs');
@@ -7,6 +8,7 @@ const app = express();
 const cors = require('cors');
 const userRoutes = require('./routes/userRoutes');
 const commandsRoutes = require('./routes/commandsRoutes');
+const errorMiddleware = require('./middlewares/error');
 
 app.use(cors({
     origin: 'http://localhost:5173'
@@ -47,5 +49,7 @@ app.post('/upload', async (req, res) => {
         res.status(500).json({ error: 'Error transcribing audio' });
     }
 });
+
+app.use(errorMiddleware);
 
 module.exports = app;
