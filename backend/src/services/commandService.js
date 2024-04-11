@@ -23,6 +23,19 @@ const getCommandsByUserId = async (userId) => {
     }
 };
 
+const getCommandByName = async (nameCommand) => {
+  try {
+     const commands = await Command.findAll({
+       where: {
+         nameCommand: nameCommand,
+       }
+     });
+     return commands;
+  } catch (error) {
+     throw error;
+  }
+};
+
 const updateCommand = async (id, { nameCommand, textGenerated}) => {
     const [qtdUpdated] = await Command.update(
       { nameCommand, textGenerated},
@@ -36,4 +49,5 @@ module.exports = {
     createCommand,
     getCommandsByUserId,
     updateCommand,
+    getCommandByName
 }

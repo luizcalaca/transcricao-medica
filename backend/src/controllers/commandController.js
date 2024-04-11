@@ -12,6 +12,13 @@ const getCommandsbyUser = async (req, res) => {
   return res.status(200).json(user);
 };
 
+const getCommandsbyName = async (req, res) => {
+  console.log(req.query.command)
+  const user = await commandService.getCommandByName(req.query.command)
+  console.log(user)
+  return res.status(200).json(user);
+};
+
 const updateCommand = async (req, res) => {
     const { id } = req.params;
     const isUpdated = await commandService.updateCommand(id, req.body);
@@ -27,4 +34,5 @@ module.exports = {
     createCommand,
     getCommandsbyUser,
     updateCommand,
+    getCommandsbyName
 }
