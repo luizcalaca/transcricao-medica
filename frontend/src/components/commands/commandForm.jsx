@@ -15,7 +15,8 @@ const CommandForm = () => {
           textGenerated,
           userId: 1,
       });
-      setSuccessMessage(response);
+      console.info("RESPONSE", response)
+      setSuccessMessage(response.data.message);
       setNameCommand('');
       setTextGenerated('');
     } catch (error) {

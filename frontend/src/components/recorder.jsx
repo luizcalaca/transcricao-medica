@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from 'axios';
 
 const Recorder = () => {
@@ -43,7 +43,6 @@ const Recorder = () => {
                   setCommand(response.data.transcription)
                   setAudioChunks([])
                   setResponse('')
-                  handleCommand()
               } catch (error) {
                   console.error(error);
               }
@@ -51,26 +50,33 @@ const Recorder = () => {
       }
   };
 
-  const handleCommand = async () => {
-    try {
-      const requestOptions = {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-      };
-      console.log('Command', command)
-      const response = await fetch(`http://localhost:3012/commands/getresponse/?command=${command}`, requestOptions);
-      const data = await response.json();
-      console.log('DAta', data)
-      if(data.length == 0) {
-        setResponse('Não há comando cadastrado');
-      }else{
-        setResponse(JSON.stringify(data[0]?.textGenerated));
-      } 
-    } catch (error) {
-      console.error('Erro ao enviar o comando:', error);
-      setResponse('Erro ao enviar o comando.');
+  useEffect(() => {
+    const fetchCommandResponse = async () => {
+        try {
+            const requestOptions = {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' },
+            };
+            setResponse('')
+            console.log('Command', command)
+            const response = await fetch(`http://localhost:3012/commands/getresponse/?command=${command}`, requestOptions);
+            const data = await response.json();
+            console.log('Data', data)
+            if(data.length == 0) {
+                setResponse('Não há comando cadastrado');
+            } else {
+                setResponse(JSON.stringify(data[0]?.textGenerated));
+            }
+        } catch (error) {
+            console.error('Erro ao enviar o comando:', error);
+            setResponse('Erro ao enviar o comando.');
+        }
+    };
+
+    if (command) {
+        fetchCommandResponse();
     }
- };
+}, [command]); 
 
     return (
         <div>
