@@ -33,7 +33,7 @@ const CommandForm = () => {
         value={nameCommand}
         onChange={(e) => setNameCommand(e.target.value)}
       />
-      <input
+      <textarea
         type="text"
         placeholder="O que o Comando Gera"
         value={textGenerated}

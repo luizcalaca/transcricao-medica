@@ -38,10 +38,11 @@ const Recorder = () => {
           reader.onloadend = async () => {
               const base64data = reader.result.split(',')[1]; // Extrai os dados base64 da string
               try {
-                  console.log(base64data)
                   const response = await axios.post('http://localhost:3012/upload', { audioBuffer: base64data });
                   console.log(response.data);
                   setCommand(response.data.transcription)
+                  setAudioChunks([])
+                  setResponse('')
                   handleCommand()
               } catch (error) {
                   console.error(error);
@@ -56,9 +57,15 @@ const Recorder = () => {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       };
-      const response = await fetch(`http://localhost:3012/commands/getresponse/?command=ola`, requestOptions);
+      console.log('Command', command)
+      const response = await fetch(`http://localhost:3012/commands/getresponse/?command=${command}`, requestOptions);
       const data = await response.json();
-      setResponse(JSON.stringify(data[0].textGenerated)); // Convertendo a resposta para string formatada
+      console.log('DAta', data)
+      if(data.length == 0) {
+        setResponse('Não há comando cadastrado');
+      }else{
+        setResponse(JSON.stringify(data[0]?.textGenerated));
+      } 
     } catch (error) {
       console.error('Erro ao enviar o comando:', error);
       setResponse('Erro ao enviar o comando.');
