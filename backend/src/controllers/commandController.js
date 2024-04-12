@@ -3,7 +3,7 @@ const commandService = require('../services/commandService');
 const createCommand = async (req, res) => {
   const newCommand = await commandService.createCommand(req.body);
 
-  return res.status(201).json(newCommand);
+  return res.status(201).json({message: "Comando criado com sucesso"});
 };
 
 const getCommandsbyUser = async (req, res) => {
