@@ -1,6 +1,7 @@
 // CommandList.js
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import VITE_API_URL from '../../utils/url_api';
 
 const CommandList = () => {
  const [commands, setCommands] = useState([]);
@@ -8,7 +9,8 @@ const CommandList = () => {
  useEffect(() => {
     const fetchCommands = async () => {
       try {
-        const response = await axios.get('http://localhost:3012/commands/getalluser/1');
+        console.log("URL", VITE_API_URL)
+        const response = await axios.get(`${VITE_API_URL}/commands/getalluser/1`);
         setCommands(response.data);
       } catch (error) {
         console.error('Erro ao buscar comandos:', error);

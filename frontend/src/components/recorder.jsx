@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
+import VITE_API_URL from "../utils/url_api";
 
 const Recorder = () => {
     const [recording, setRecording] = useState(false);
@@ -38,7 +39,7 @@ const Recorder = () => {
           reader.onloadend = async () => {
               const base64data = reader.result.split(',')[1]; // Extrai os dados base64 da string
               try {
-                  const response = await axios.post('http://localhost:3012/upload', { audioBuffer: base64data });
+                  const response = await axios.post(`${VITE_API_URL}/upload`, { audioBuffer: base64data });
                   console.log(response.data);
                   setCommand(response.data.transcription)
                   setAudioChunks([])
@@ -58,10 +59,8 @@ const Recorder = () => {
                 headers: { 'Content-Type': 'application/json' },
             };
             setResponse('')
-            console.log('Command', command)
             const response = await fetch(`http://localhost:3012/commands/getresponse/?command=${command}`, requestOptions);
             const data = await response.json();
-            console.log('Data', data)
             if(data.length == 0) {
                 setResponse('Não há comando cadastrado');
             } else {
