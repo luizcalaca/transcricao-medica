@@ -43,6 +43,7 @@ app.post('/upload', async (req, res) => {
     try {
         const response = await axios.post('https://api.openai.com/v1/audio/transcriptions', formData, config);
         const transcription = response.data.text;
+        console.log("Transcription", transcription)
         res.json({ transcription });
     } catch (error) {
         console.error(error);
