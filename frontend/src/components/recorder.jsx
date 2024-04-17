@@ -59,7 +59,7 @@ const Recorder = () => {
                 headers: { 'Content-Type': 'application/json' },
             };
             setResponse('')
-            const response = await fetch(`http://localhost:3012/commands/getresponse/?command=${command}`, requestOptions);
+            const response = await fetch(`${VITE_API_URL}/commands/getresponse/?command=${command}`, requestOptions);
             const data = await response.json();
             if(data.length == 0) {
                 setResponse('Não há comando cadastrado');
