@@ -61,6 +61,14 @@ cd frontend
 npm start
 ```
 
+6. **Como rodar as migrations no Railway:**
+```
+railway login
+railway link
+railway status
+railway run npx sequelize-cli db:migrate
+```
+
 ## Contribuindo
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou enviar um pull request.
