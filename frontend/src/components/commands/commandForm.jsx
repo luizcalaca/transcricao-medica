@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import VITE_API_URL from '../../utils/url_api';
 
 const CommandForm = () => {
  const [nameCommand, setNameCommand] = useState('');
@@ -10,7 +11,7 @@ const CommandForm = () => {
  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3012/commands/create', {
+      const response = await axios.post(`${VITE_API_URL}/commands/create`, {
           nameCommand, 
           textGenerated,
           userId: 1,
